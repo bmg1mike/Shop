@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Shop.DataAccess.InMemory
 {
-    class ProductRepository
+    public class ProductRepository
     {
         ObjectCache cache = MemoryCache.Default;
         List<Product> products;
@@ -53,6 +53,7 @@ namespace Shop.DataAccess.InMemory
         public Product GetProduct(string id)
         {
             var product = products.Find(p => p.Id == id);
+
             if(product is null)
             {
                 throw new Exception("Product Not Found");
@@ -65,6 +66,7 @@ namespace Shop.DataAccess.InMemory
         public void Delete(string id)
         {
             var product = products.Find(p => p.Id == id);
+
             if(product is null)
             {
                 throw new Exception("Product not found");
